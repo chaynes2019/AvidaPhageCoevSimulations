@@ -1,0 +1,80 @@
+Search       #  1:  Find organism end.
+Nop-C        #  2:  - Match CD:AB
+Nop-D
+Nop-C
+Nop-D
+Push-Prev    #  5:  Move end position to Stack-A
+SetMemory    #  6:  Place FLOW-head in memory space for offspring
+Nop-A
+Head-Move    #  7:  Move Write head to flow head position
+Nop-C        #  8:
+Nop-C      #  8:
+Nop-C
+Nop-C        #  8:
+Nop-C
+Nop-C
+Nop-C #  8:
+Nop-C        #  8:
+Nop-C        #  8:
+Nop-C
+Nop-C        #  8:
+Nop-C
+IO			#a:[LEN] b:[X] c:[]
+IO			#a:[LEN] b:[X] c:[Y]
+Nop-C
+Val-Copy	#a:[LEN] b:[X] c:[Y] d:[X]
+Nop-D
+Nop-B
+Val-Nand	#a:[LEN] b:[X nand Y, X] c:[Y] d: [X] (OK)
+Nop-B
+Nop-C
+Nop-D
+Val-Nand	#a:[X or~ Y, LEN] b:[X nand Y, X] c:[Y] d:[X]
+Nop-A
+Nop-C
+Nop-B
+Val-Nand	#a:[X or~ Y, LEN] b:[X nand Y, X] c:[Y or~ X, Y] d:[X]
+Nop-C
+Nop-D
+Nop-B
+Val-Nand	#a:[X or~ Y, LEN] b:[X xor Y ,X nand Y, X] c:[Y or~ X, Y] d:[X]
+Nop-B
+Nop-C
+Nop-A
+Val-Copy	#a:[X xor Y ,X or~ Y, LEN] b:[X xor Y ,X nand Y, X] c:[Y or~ X, Y] d:[X]
+Nop-A
+Nop-B
+Val-Nand	#a:[X xor Y, X or~ Y, LEN] b:[X equ Y, X xor Y, X] c:[Y or ~X ,Y]
+Nop-B
+Nop-A
+Nop-B
+IO
+Nop-B
+Val-Delete	#a:[X or~ Y, LEN] b:[X equ Y, X xor Y, X] c:[Y or ~X ,Y]
+Nop-A
+Val-Delete	#a:[LEN] b:[X equ Y, X xor Y, X] c:[Y or ~X ,Y]
+Nop-A
+Nop-C
+Nop-C
+Nop-C 
+Nop-C 
+Nop-C
+Nop-C
+Nop-C
+Nop-C
+Nop-C
+Search       #  9:  Drop flow head at start of copy loop
+Inst-Read    # 10:
+Inst-Write   # 11: 
+Head-Push    # 12:  Get current position of...
+Nop-C        # 13:  - Read-Head
+If-Equal     # 14:  Test if we are done copying...
+Inject
+Nop-A
+Nop-D
+Nop-D
+Head-Move    # 16:  ...If not, continue with loop.
+Nop-A        # 17:
+Nop-B
+Nop-A
+Nop-B

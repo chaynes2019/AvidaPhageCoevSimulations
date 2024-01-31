@@ -1,0 +1,26 @@
+# Avida Host Tasks data
+# Tue Jan 30 17:46:59 2024
+# First column gives the current update, next columns give the number
+# of Hosts that have the particular task
+#  1: Update
+#  2: Not
+#  3: Nand
+#  4: And
+#  5: OrNot
+#  6: Or
+#  7: AndNot
+#  8: Nor
+#  9: Xor
+# 10: Equals
+
+0 0 0 0 0 0 0 0 0 0 
+100 2 0 0 0 0 0 0 0 0 
+200 8 0 0 0 0 0 0 0 0 
+300 16 0 0 0 0 0 0 0 0 
+400 62 0 0 0 0 0 0 0 0 
+500 124 0 0 0 0 0 0 0 0 
+600 313 0 0 0 0 0 0 0 0 
+700 705 0 0 0 0 0 0 0 0 
+800 1521 0 0 0 0 0 0 0 0 
+900 2367 0 0 0 0 0 0 0 0 
+1000 3026 0 0 1 0 0 0 0 0 
