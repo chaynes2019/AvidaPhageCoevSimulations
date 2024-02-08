@@ -1,6 +1,6 @@
-RESET_INT=1000
+RESET_INT=2500
 
-./avida -s 1 -set EVENT_FILE eventsBeginCoev.cfg
+./avida -s 30 -set EVENT_FILE eventsBeginCoev.cfg
 
 rm resetSpop.spop
 rm parasiteLines.txt
@@ -21,9 +21,10 @@ mv resetSpop.spop ../..
 cd ..
 cd ..
 
-for n in {1..1};
+for n in {1..5};
 do
-    ./avida -s 1 -set EVENT_FILE eventsResetRun.cfg
+    echo "Entering reset round $n"
+    ./avida -s 30 -set EVENT_FILE eventsResetRun.cfg
     rm resetSpop.spop
     cd data
     mkdir coevResetRun-$n
