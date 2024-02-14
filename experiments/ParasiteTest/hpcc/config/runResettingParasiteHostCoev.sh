@@ -1,4 +1,4 @@
-RESET_INT=2500
+RESET_INT=5000
 
 ./avida -s 30 -set EVENT_FILE eventsBeginCoev.cfg
 
@@ -21,7 +21,7 @@ mv resetSpop.spop ../..
 cd ..
 cd ..
 
-for n in {1..5};
+for n in {1..9};
 do
     echo "Entering reset round $n"
     ./avida -s 30 -set EVENT_FILE eventsResetRun.cfg
