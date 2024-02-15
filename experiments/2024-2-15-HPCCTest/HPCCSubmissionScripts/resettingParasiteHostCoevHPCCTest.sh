@@ -53,7 +53,7 @@ mv resetSpop.spop ../..
 cd ..
 cd ..
 
-for n in {1..9};
+for n in {1..2};
 do
     echo "Entering reset round $n"
     ./avida -s 30 -set EVENT_FILE eventsResetRun.cfg
