@@ -1,3 +1,7 @@
+#!/bin/bash
+# The interpreter used to execute the script
+
+
 #SBATCH --job-name=parasiteHostCoevTest
 #SBATCH --mail-user=clhaynes@umich.edu
 #SBATCH --mail-type=BEGIN,END
