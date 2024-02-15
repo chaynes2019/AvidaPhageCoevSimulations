@@ -9,7 +9,7 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --mem-per-cpu=1000m 
-#SBATCH --time=00-01:00:00
+#SBATCH --time=00-10:00:00
 #SBATCH --account=zamanlh0
 #SBATCH --partition=standard
 #SBATCH --output=/home/%u/%x-%j.log
