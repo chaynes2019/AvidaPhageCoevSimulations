@@ -13,7 +13,7 @@
 USERNAME=clhaynes
 EXPERIMENT_ID=2024-2-15-HPCCTest
 OUTPUT_DIR=/scratch/zamanlh_root/zamanlh0/${USERNAME}/SlurmTest
-CONFIG_DIR=/home/${USERNAME}/AvidaPhageCoevSimulations/experiments/${EXPERIMENT_ID}/config
+CONFIG_DIR=/home/${USERNAME}/Documents/AvidaPhageCoevSimulations/experiments/${EXPERIMENT_ID}/config
 
 
 RUN_DIR=${OUTPUT_DIR}

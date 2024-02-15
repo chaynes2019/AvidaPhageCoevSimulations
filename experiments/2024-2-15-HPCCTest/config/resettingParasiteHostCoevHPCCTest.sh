@@ -13,7 +13,7 @@
 USERNAME=clhaynes
 EXPERIMENT_ID=2024-2-15-HPCCTest
 OUTPUT_DIR=/scratch/zamanlh_root/zamanlh0/${USERNAME}/${EXPERIMENT_ID}
-CONFIG_DIR=/home/${USERNAME}/AvidaPhageCoevSimulations/experiments/${EXPERIMENT_ID}/config
+CONFIG_DIR=/home/${USERNAME}/Documents/AvidaPhageCoevSimulations/experiments/${EXPERIMENT_ID}/config
 #SEED_OFFSET=2100
 
 #SEED=$((SEED_OFFSET + SLURM_ARRAY_TASK_ID - 1))
