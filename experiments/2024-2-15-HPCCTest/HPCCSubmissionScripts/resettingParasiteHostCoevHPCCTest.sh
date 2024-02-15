@@ -32,7 +32,7 @@ cd ${RUN_DIR}
 
 RESET_INT=20000
 
-./avida -s 30 -set EVENT_FILE eventsBeginCoev.cfg
+./avida -s 30 -set EVENT_FILE eventsBeginCoev.cfg >> log_0.txt
 
 rm resetSpop.spop
 rm parasiteLines.txt
@@ -42,6 +42,7 @@ cd data
 mkdir coevResetRun-0
 mv *.spop coevResetRun-0
 mv *.dat coevResetRun-0
+mv log_0.txt coevResetRun-0
 cp resetSpopFileMaker.py coevResetRun-0
 cd coevResetRun-0
 echo "Running grep!"
@@ -56,12 +57,13 @@ cd ..
 for n in {1..2};
 do
     echo "Entering reset round $n"
-    ./avida -s 30 -set EVENT_FILE eventsResetRun.cfg
+    ./avida -s 30 -set EVENT_FILE eventsResetRun.cfg >> log_$n.txt
     rm resetSpop.spop
     cd data
     mkdir coevResetRun-$n
     mv *.spop coevResetRun-$n
     mv *.dat coevResetRun-$n
+    mv log_$n.txt coevResetRun-$n
     cp resetSpopFileMaker.py coevResetRun-$n
     cd coevResetRun-$n
     echo "Running grep!"
