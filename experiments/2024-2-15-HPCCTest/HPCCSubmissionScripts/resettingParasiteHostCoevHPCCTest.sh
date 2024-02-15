@@ -30,7 +30,7 @@ cd ${CONFIG_DIR}
 cp * ${RUN_DIR}
 cd ${RUN_DIR}
 
-RESET_INT=15000
+RESET_INT=20000
 
 ./avida -s 30 -set EVENT_FILE eventsBeginCoev.cfg
 
