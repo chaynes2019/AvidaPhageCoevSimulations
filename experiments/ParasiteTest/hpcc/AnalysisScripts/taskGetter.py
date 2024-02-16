@@ -23,7 +23,7 @@ parasiteTasks = np.zeros((9, (overallRunLength // 100) + 1))
 -add tasks at each timepoint to each column of container'''
 
 for k in range(numberOfRounds):
-    with open(f"data/coevResetRun-{k}/host_tasks.dat", 'r') as taskFile:
+    with open(f"../config/data/coevResetRun-{k}/host_tasks.dat", 'r') as taskFile:
         taskLines = taskFile.readlines()[taskFilePreambleLines:]
         #The first line, that of 0 updates, is wrong on resets: therefore, it is best to ignore it, especially as it
         #refers to the same time as the last line of the previous
@@ -41,7 +41,7 @@ for k in range(numberOfRounds):
             #that will be inaccurate for the reset peeps
             hostTasks[:, (k * resetInterval) // 100 + n] = tasks
         
-    with open(f"data/coevResetRun-{k}/parasite_tasks.dat", 'r') as taskFile:
+    with open(f"../config/data/coevResetRun-{k}/parasite_tasks.dat", 'r') as taskFile:
         taskLines = taskFile.readlines()[taskFilePreambleLines:]
         #The first line, that of 0 updates, is wrong on resets: therefore, it is best to ignore it, especially as it
         #refers to the same time as the last line of the previous
@@ -65,7 +65,7 @@ numParasites = np.zeros((1, (overallRunLength // 100) + 1))
 #Retrieving the number of parasites extant at each time (i.e. every 100 updates) from ParasiteData.dat
 parasiteDataPreamble = 5
 for k in range(numberOfRounds):
-    with open(f"data/coevResetRun-{k}/ParasiteData.dat", 'r') as taskFile:
+    with open(f"../config/data/coevResetRun-{k}/ParasiteData.dat", 'r') as taskFile:
         taskLines = taskFile.readlines()[parasiteDataPreamble:]
         if (k == 0):
             linesToAdd = len(taskLines)
@@ -121,9 +121,17 @@ for n in range(9):
     linePlots.append(plt.plot(np.array([k * 100 for k in range(overallRunLength // 100 + 1)]),
                               parasiteTasks[n, :],
                               label=taskLabels[n]))
+    
+#Makes dashed lines at reset marks
+resetUpdates = [resetInterval * (k + 1) for k in range(overallRunLength // resetInterval - 1)]
+upperYBound = np.max(parasiteTasks)
+
+for x in resetUpdates:
+    plt.plot(np.array([x for k in range(100)]), np.array([(upperYBound / 100) * k for k in range(100)]), 'r--')
+
 plt.legend()
 plt.title(f"Parasite Task Counts vs. Updates at Reset = {resetInterval}")
-
+plt.savefig(f"../OutputData/ParasiteTaskCountsVsUpdatesAtReset{resetInterval}")
 
 plt.figure(1)
 plt.plot(np.array([k * 100 for k in range(overallRunLength // 100 + 1)]),
@@ -132,15 +140,26 @@ plt.plot(np.array([k * 100 for k in range(overallRunLength // 100 + 1)]),
 plt.plot(np.array([k * 100 for k in range(overallRunLength // 100 + 1)]),
          hostTasks[0, :],
          label="Host-NOT")
+
+#Makes dashed lines at reset marks
+resetUpdates = [resetInterval * (k + 1) for k in range(overallRunLength // resetInterval - 1)]
+upperYBound = np.max([np.max(parasiteTasks[0, :]), np.max(hostTasks[0,:])])
+for x in resetUpdates:
+    plt.plot(np.array([x for k in range(100)]), np.array([(upperYBound / 100) * k for k in range(100)]), 'r--')
+
 plt.legend()
 plt.title(f"Parasite and Host NOT counts vs. Updates at Reset = {resetInterval}")
-
+plt.savefig(f"../OutputData/ParasiteHostNOTsVsUpdatesAtReset{resetInterval}")
 
 plt.figure(2)
 plt.plot(np.array([k * 100 for k in range(overallRunLength // 100 + 1)]),
          avgNumParasiteTasks)
+
+#Makes dashed lines at reset marks
 resetUpdates = [resetInterval * (k + 1) for k in range(overallRunLength // resetInterval - 1)]
+upperYBound = max(avgNumParasiteTasks)
 for x in resetUpdates:
-    plt.plot(np.array([x for k in range(350)]), np.array([0.01 * k for k in range(350)]), 'r--')
+    plt.plot(np.array([x for k in range(100)]), np.array([(upperYBound / 100) * k for k in range(100)]), 'r--')
+
 plt.title(f"Average Number of Tasks in Parasite Genome vs. Updates at Reset = {resetInterval}")
-plt.show()
+plt.savefig(f"../OutputData/AverageNumTaksVsUpdatesAtReset{resetInterval}")
