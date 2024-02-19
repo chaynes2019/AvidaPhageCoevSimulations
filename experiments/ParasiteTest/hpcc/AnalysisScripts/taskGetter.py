@@ -162,4 +162,4 @@ for x in resetUpdates:
     plt.plot(np.array([x for k in range(100)]), np.array([(upperYBound / 100) * k for k in range(100)]), 'r--')
 
 plt.title(f"Average Number of Tasks in Parasite Genome vs. Updates at Reset = {resetInterval}")
-plt.savefig(f"../OutputData/AverageNumTaksVsUpdatesAtReset{resetInterval}")
+plt.savefig(f"../OutputData/AverageNumTasksVsUpdatesAtReset{resetInterval}")
