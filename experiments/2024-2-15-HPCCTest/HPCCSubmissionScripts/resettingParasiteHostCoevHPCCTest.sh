@@ -36,7 +36,7 @@ cp * ${RUN_DIR}/AnalysisScripts
 
 cd ${RUN_DIR}/config
 
-TOTAL_RUN_LENGTH=72000
+OVERALL_RUN_LENGTH=72000
 RESET_INTERVAL=24000
 
 ./avida -s 30 -set EVENT_FILE eventsBeginCoev.cfg
