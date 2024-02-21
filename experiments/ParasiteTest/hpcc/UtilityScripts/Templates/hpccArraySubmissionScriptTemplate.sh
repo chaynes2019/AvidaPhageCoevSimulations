@@ -36,7 +36,7 @@ cd $${RUN_DIR}
 
 cd $${TEMPLATE_DIR}
 
-cp * $${RUN_DIR}
+cp -r * $${RUN_DIR}
 
 cd $${RUN_DIR}/config
 
