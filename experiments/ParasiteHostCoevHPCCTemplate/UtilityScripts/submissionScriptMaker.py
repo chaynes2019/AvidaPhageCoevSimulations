@@ -1,4 +1,5 @@
 from string import Template
+import numpy as np
 
 inputCheck = True
 
@@ -20,6 +21,7 @@ if hpccBool:
     numReplicates = int(replicates)
 
     time = (3.2 / 20000) * int(overallRunLength)
+    time = int(np.ceil(time))
     if(time >= 24):
         print("You may have to rethink how long this will take")
         inputCheck = False
