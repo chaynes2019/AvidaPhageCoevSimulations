@@ -22,7 +22,7 @@ PROJECT_HOME_DIR=/home/$${USERNAME}/Documents/AvidaPhageCoevSimulations
 mkdir -p experiments/$${EXPERIMENT_ID}
 
 OUTPUT_DIR=/scratch/zamanlh_root/zamanlh0/$${USERNAME}/$${EXPERIMENT_ID}
-TEMPLATE_DIR=$${PROJECTHOME_DIR}/experiments/ParasiteHostCoevHPCCTemplate
+TEMPLATE_DIR=$${PROJECT_HOME_DIR}/experiments/ParasiteHostCoevHPCCTemplate
 #SEED_OFFSET=2100
 
 #SEED=$$((SEED_OFFSET + SLURM_ARRAY_TASK_ID - 1))
