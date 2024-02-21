@@ -43,7 +43,7 @@ if hpccBool:
                                                                          numReplicates = numReplicates,
                                                                          timeString = timeString)
         
-        with open('../../../runHPCCResetExperiment.sh') as f:
+        with open('../../../runHPCCResetExperiment.sh', 'w') as f:
             f.write(arraySubmissionScript)
 
     else:
@@ -61,7 +61,7 @@ if hpccBool:
                                                                          hpcc = hpcc,
                                                                          timeString = timeString)
         
-        with open('../../../runHPCCResetExperiment.sh') as f:
+        with open('../../../runHPCCResetExperiment.sh', 'w') as f:
             f.write(singleSubmissionScript)
 
 else:    
