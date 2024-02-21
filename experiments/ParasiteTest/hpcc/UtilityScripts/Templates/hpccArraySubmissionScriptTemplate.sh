@@ -27,7 +27,7 @@ mkdir -p experiments/$${EXPERIMENT_ID}
 OUTPUT_DIR=/scratch/zamanlh_root/zamanlh0/$${USERNAME}/$${EXPERIMENT_ID}
 TEMPLATE_DIR=$${PROJECTHOME_DIR}/experiments/ParasiteHostCoevHPCCTemplate
 
-SEED=$((SEED_OFFSET + SLURM_ARRAY_TASK_ID - 1))
+SEED=$$((SEED_OFFSET + SLURM_ARRAY_TASK_ID - 1))
 JOB_ID=${SLURM_ARRAY_TASK_ID}
 RUN_DIR=${OUTPUT_DIR}/${JOB_ID}
 
