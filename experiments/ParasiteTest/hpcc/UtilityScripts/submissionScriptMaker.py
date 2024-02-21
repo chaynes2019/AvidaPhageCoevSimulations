@@ -27,7 +27,7 @@ if hpccBool:
     timeString = f"00-{time}:00:00"
 
 if hpccBool:
-    if replicates > 1:
+    if numReplicates > 1:
         arraySubmissionScriptTemplateName = "Templates/hpccArraySubmissionScriptTemplate.sh"
 
         with open(arraySubmissionScriptTemplateName, 'r') as templateFile:
