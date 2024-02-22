@@ -8,7 +8,7 @@
 #SBATCH --cpus-per-task=1
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
-#SBATCH --mem-per-cpu=400m 
+#SBATCH --mem-per-cpu=500m 
 #SBATCH --time=$timeString
 #SBATCH --account=zamanlh0
 #SBATCH --partition=standard
