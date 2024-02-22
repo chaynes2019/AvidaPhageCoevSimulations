@@ -13,7 +13,8 @@ resetInterval = int(sys.argv[2])
 numberOfResets = overallRunLength // resetInterval - 1
 numberOfRounds = numberOfResets + 1
 
-parasiteLengths = np.zeros((1, (overallRunLength // 100) + 1))
+#There is no parasite genome length data for update 0
+parasiteLengths = np.zeros((overallRunLength // 100))
 
 
 
@@ -21,15 +22,30 @@ parasiteLengths = np.zeros((1, (overallRunLength // 100) + 1))
 -add tasks at each timepoint to each column of container'''
 
 for k in range(numberOfRounds):
-    for n in range(resetInterval // 100):
-        with open(f"data/coevResetRun-{k}/parasiteGenome_list.{n * 100}", 'r') as lengthFile:
+    for n in range((resetInterval // 100)):
+        #n + 1 is used because there is no parasite_genome_list.0.dat; we still want
+        #the correct number of length measurements, though
+        with open(f"../config/data/coevResetRun-{k}/parasite_genome_list.{(n + 1) * 100}.dat", 'r') as lengthFile:
             genomeLines = lengthFile.readlines()
-            #The first line, that of 0 updates, is wrong on resets: therefore, it is best to ignore it, especially as it
-            #refers to the same time as the last line of the previous
+            
             sum = 0
             for line in genomeLines:
                 sum += len(line)
             
-            avg = sum / len(genomeLines)
+            if len(genomeLines) > 0:
+                avg = sum / len(genomeLines)
+            else:
+                avg = 0
 
             parasiteLengths[k * (resetInterval // 100) + n] = avg
+
+plt.figure(0)
+plt.plot(np.array([(n + 1) * 100 for n in range(overallRunLength // 100)]), parasiteLengths)
+
+resetUpdates = [resetInterval * (k + 1) for k in range(overallRunLength // resetInterval - 1)]
+upperYBound = max(parasiteLengths)
+for x in resetUpdates:
+    plt.plot(np.array([x for k in range(100)]), np.array([(upperYBound / 100) * k for k in range(100)]), 'r--')
+
+plt.title(f"Average Length of Parasite Genome vs. Updates at Reset = {resetInterval}")
+plt.savefig(f"../OutputData/avgParasiteGenomeLengthVsUpdates")
