@@ -106,3 +106,5 @@ mv log_*.txt data/logFiles
 
 cd ../AnalysisScripts
 python3 phenotypeTasksGetter.py $${OVERALL_RUN_LENGTH} $${RESET_INTERVAL}
+
+cp -r ../OutputData $${PROJECT_HOME_DIR}/experiments/$${EXPERIMENT_ID}
