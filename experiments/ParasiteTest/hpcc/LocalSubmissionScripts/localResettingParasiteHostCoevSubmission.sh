@@ -1,5 +1,5 @@
-OVERALL_RUN_LENGTH=14000
-RESET_INTERVAL=3500
+OVERALL_RUN_LENGTH=2000
+RESET_INTERVAL=2000
 HPCC=0
 
 cd ../UtilityScripts
@@ -22,8 +22,8 @@ echo "Running grep!"
 grep horz:int detail-${RESET_INTERVAL}.spop >> parasiteLines.txt
 grep div detail-${RESET_INTERVAL}.spop >> hostLines.txt
 python3 resetSpopFileMaker.py
-mv parasiteLines.txt parasiteLines0.txt
-mv hostLines.txt hostLines0.txt
+rm parasiteLines.txt
+rm hostLines.txt
 rm resetSpopFileMaker.py
 mv resetSpop.spop ../..
 cd ..
@@ -37,7 +37,7 @@ for (( n=1; n<=NUM_RESET_ROUNDS; n++ ))
 do
     echo "Entering reset round ${n}"
     ./avida -s 30 -set EVENT_FILE eventsResetRun.cfg >> log_${n}.txt
-    mv resetSpop.spop resetSpop$n.spop
+    rm resetSpop.spop
     cd data
     mkdir coevResetRun-${n}
     mv *.spop coevResetRun-${n}
@@ -48,8 +48,8 @@ do
     grep horz:int detail-${RESET_INTERVAL}.spop >> parasiteLines.txt
     grep div detail-${RESET_INTERVAL}.spop >> hostLines.txt
     python3 resetSpopFileMaker.py
-    mv parasiteLines.txt parasiteLines$n.txt
-    rm hostLines.txt hostLines$n.txt
+    rm parasiteLines.txt
+    rm hostLines.txt
     rm resetSpopFileMaker.py
     mv resetSpop.spop ../..
     cd ..
