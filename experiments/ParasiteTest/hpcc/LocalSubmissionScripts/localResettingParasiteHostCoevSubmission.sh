@@ -1,5 +1,5 @@
-OVERALL_RUN_LENGTH=15000
-RESET_INTERVAL=5000
+OVERALL_RUN_LENGTH=5000
+RESET_INTERVAL=2500
 HPCC=0
 
 cd ../UtilityScripts
@@ -63,4 +63,4 @@ cd ..
 mv log_*.txt data/logFiles
 
 cd ../AnalysisScripts
-python3 phenotypeTasksGetter.py ${OVERALL_RUN_LENGTH} ${RESET_INTERVAL}
+python3 phenotypeTasksGetter.py ${OVERALL_RUN_LENGTH} ${RESET_INTERVAL} comparisonTest

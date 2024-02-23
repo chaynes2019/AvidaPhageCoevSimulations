@@ -14,9 +14,9 @@ resetInterval = input("Reset Interval (in updates): ")
 hpcc = input("Is this on the Great Lakes HPCC? (answer 1 for yes; 0 for no): ")
 hpccBool = bool(int(hpcc))
 
-if hpccBool:
-    experimentName = input("Experiment Name: ")
+experimentName = input("Experiment Name: ")
 
+if hpccBool:
     replicates = input("How many replicates? : ")
     numReplicates = int(replicates)
 
@@ -73,7 +73,7 @@ else:
         templateString = templateFile.read()
         submissionScriptTemplate = Template(templateString)
 
-    submissionScript = submissionScriptTemplate.substitute(overallRunLength = overallRunLength, resetInterval = resetInterval, hpcc = hpcc)
+    submissionScript = submissionScriptTemplate.substitute(overallRunLength = overallRunLength, resetInterval = resetInterval, hpcc = hpcc, experimentName = experimentName)
 
     with open("/home/hytendf/Projects/AvidaPhageCoevSimulations/experiments/ParasiteTest/hpcc/LocalSubmissionScripts/localResettingParasiteHostCoevSubmission.sh", 'w') as f:
         f.write(submissionScript)

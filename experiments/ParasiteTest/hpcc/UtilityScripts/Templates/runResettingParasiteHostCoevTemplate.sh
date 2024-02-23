@@ -63,4 +63,4 @@ cd ..
 mv log_*.txt data/logFiles
 
 cd ../AnalysisScripts
-python3 phenotypeTasksGetter.py $${OVERALL_RUN_LENGTH} $${RESET_INTERVAL}
+python3 phenotypeTasksGetter.py $${OVERALL_RUN_LENGTH} $${RESET_INTERVAL} $experimentName

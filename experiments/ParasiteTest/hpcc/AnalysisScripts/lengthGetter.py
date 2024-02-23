@@ -1,6 +1,7 @@
 import numpy as np
 import sys
 import matplotlib.pyplot as plt
+import pandas as pd
 
 #Retrieve numberOfResets or numberOfRounds as well as the overallRunLength from the commandline arguments
 #and include resetInterval
@@ -9,6 +10,7 @@ print(sys.argv)
 
 overallRunLength = int(sys.argv[1])
 resetInterval = int(sys.argv[2])
+experimentID = sys.argv[3]
 
 numberOfResets = overallRunLength // resetInterval - 1
 numberOfRounds = numberOfResets + 1
@@ -49,3 +51,8 @@ for x in resetUpdates:
 
 plt.title(f"Average Length of Parasite Genome vs. Updates at Reset = {resetInterval}")
 plt.savefig(f"../OutputData/avgParasiteGenomeLengthVsUpdates")
+
+print(parasiteLengths)
+
+parasiteLengthsDataframe = pd.DataFrame(parasiteLengths)
+parasiteLengthsDataframe.to_csv(f"../OutputData/{experimentID}-avgParasiteGenomeLengthVsUpdates.csv")
